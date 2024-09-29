@@ -1,17 +1,5 @@
 USE `task-02`;
 
--- get info about all indexes in the database
-SELECT
-    TABLE_NAME,
-    INDEX_NAME,
-    COLUMN_NAME,
-    SEQ_IN_INDEX,  -- column's position in the index (1 for first column, etc.)
-    NON_UNIQUE,
-    INDEX_TYPE
-FROM
-    information_schema.statistics
-WHERE TABLE_NAME LIKE 'opt_%';
-
 -- delete indexes
 DROP INDEX idx_opt_clients_status ON opt_clients;
 DROP INDEX idx_opt_clients_email ON opt_clients;
@@ -20,7 +8,7 @@ DROP INDEX idx_opt_orders_order_date ON opt_orders;
 
 
 -- Bad SELECT query
-SELECT
+EXPLAIN ANALYZE SELECT
     c1.surname AS client_surname,
     c1.email AS client_email,
     p1.product_name AS product_name,
@@ -75,7 +63,7 @@ CREATE INDEX idx_opt_orders_order_date
     ON opt_orders(order_date);
 
 -- rewrite the query
-WITH filtered_clients AS (
+EXPLAIN ANALYZE WITH filtered_clients AS (
     -- active and 'example.com' clients
     SELECT
         id,

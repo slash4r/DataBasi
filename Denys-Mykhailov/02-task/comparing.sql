@@ -1,25 +1,5 @@
-USE `task-02`;
-
--- get info about all indexes in the database
-SELECT
-    TABLE_NAME,
-    INDEX_NAME,
-    COLUMN_NAME,
-    SEQ_IN_INDEX,  -- column's position in the index (1 for first column, etc.)
-    NON_UNIQUE,
-    INDEX_TYPE
-FROM
-    information_schema.statistics
-WHERE TABLE_NAME LIKE 'opt_%';
-
--- delete indexes
-DROP INDEX idx_opt_clients_status ON opt_clients;
-DROP INDEX idx_opt_clients_email ON opt_clients;
-DROP INDEX idx_opt_products_product_category ON opt_products;
-DROP INDEX idx_opt_orders_order_date ON opt_orders;
-
-
--- Bad SELECT query
+-- Store the result of the bad query in a temporary table
+CREATE TEMPORARY TABLE bad_query_results AS
 SELECT
     c1.surname AS client_surname,
     c1.email AS client_email,
@@ -54,27 +34,13 @@ WHERE
     AND p3.product_category = 'Category3'
     AND o1.order_date >= '2023-01-01'
     AND o2.order_date >= '2023-01-01'
-    AND o3.order_date >= '2023-01-01'
-ORDER BY
-    o1.order_date DESC,
-    o2.order_date DESC,
-    o3.order_date DESC;
+    AND o3.order_date >= '2023-01-01';
 
--- Good SELECT query
--- add indexes to the tables
-CREATE INDEX idx_opt_clients_status
-    ON opt_clients(status);
+-- drop the temporary table if it exists
+DROP TEMPORARY TABLE IF EXISTS good_query_results;
 
-CREATE INDEX idx_opt_clients_email
-    ON opt_clients(email);
-
-CREATE INDEX idx_opt_products_product_category
-    ON opt_products(product_category);
-
-CREATE INDEX idx_opt_orders_order_date
-    ON opt_orders(order_date);
-
--- rewrite the query
+-- Store the result of the good query in a temporary table
+CREATE TEMPORARY TABLE good_query_results AS
 WITH filtered_clients AS (
     -- active and 'example.com' clients
     SELECT
@@ -174,3 +140,43 @@ FROM
     joined_data jd
 ORDER BY
     jd.order_date_1 DESC;
+
+
+
+SELECT COUNT(*) FROM bad_query_results;
+
+SELECT COUNT(*) FROM good_query_results;
+
+-- if the good query has rows not present in the bad query
+SELECT g.*
+FROM good_query_results g
+LEFT JOIN bad_query_results b
+ON g.client_surname = b.client_surname
+AND g.client_email = b.client_email
+AND g.product_name = b.product_name
+AND g.product_category = b.product_category
+AND g.order_date = b.order_date
+AND g.client_status = b.client_status
+AND g.client_surname_2 = b.client_surname_2
+AND g.client_email_2 = b.client_email_2
+AND g.product_name_2 = b.product_name_2
+AND g.product_category_2 = b.product_category_2
+AND g.order_date_2 = b.order_date_2
+WHERE b.client_surname IS NULL;
+
+-- vice versa
+SELECT b.*
+FROM bad_query_results b
+LEFT JOIN good_query_results g
+ON b.client_surname = g.client_surname
+AND b.client_email = g.client_email
+AND b.product_name = g.product_name
+AND b.product_category = g.product_category
+AND b.order_date = g.order_date
+AND b.client_status = g.client_status
+AND b.client_surname_2 = g.client_surname_2
+AND b.client_email_2 = g.client_email_2
+AND b.product_name_2 = g.product_name_2
+AND b.product_category_2 = g.product_category_2
+AND b.order_date_2 = g.order_date_2
+WHERE g.client_surname IS NULL;
