@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_GitHub\\DataBasiGit\\DataBasiGit\\DataBasiGit.csproj": {}
+    "C:\\_GitHub\\_DataBasiGit\\Denys-Mykhailov\\DataBasiGit.csproj": {}
   },
   "projects": {
-    "C:\\_GitHub\\DataBasiGit\\DataBasiGit\\DataBasiGit.csproj": {
+    "C:\\_GitHub\\_DataBasiGit\\Denys-Mykhailov\\DataBasiGit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_GitHub\\DataBasiGit\\DataBasiGit\\DataBasiGit.csproj",
+        "projectUniqueName": "C:\\_GitHub\\_DataBasiGit\\Denys-Mykhailov\\DataBasiGit.csproj",
         "projectName": "DataBasiGit",
-        "projectPath": "C:\\_GitHub\\DataBasiGit\\DataBasiGit\\DataBasiGit.csproj",
+        "projectPath": "C:\\_GitHub\\_DataBasiGit\\Denys-Mykhailov\\DataBasiGit.csproj",
         "packagesPath": "C:\\Users\\dennm\\.nuget\\packages\\",
-        "outputPath": "C:\\_GitHub\\DataBasiGit\\DataBasiGit\\obj\\",
+        "outputPath": "C:\\_GitHub\\_DataBasiGit\\Denys-Mykhailov\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dennm\\AppData\\Roaming\\NuGet\\NuGet.Config"

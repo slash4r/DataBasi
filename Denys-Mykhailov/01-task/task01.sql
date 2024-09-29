@@ -1,8 +1,7 @@
 USE assignment01;
 
 -- count how many students are enrolled in each subject
-SELECT s.subject_id,
-       s.subject_name,
+SELECT s.subject_name,
        COUNT(e.student_id) AS enrolled_students
 FROM Subjects s
          LEFT JOIN Enrollments e ON s.subject_id = e.subject_id

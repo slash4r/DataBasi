@@ -42,7 +42,7 @@ CREATE TABLE Schedule (
                           FOREIGN KEY (subject_id) REFERENCES Subjects(subject_id)
 );
 
--- changing something
+-- changing something (do after filling.sql)
 
 ALTER TABLE teachers DROP COLUMN subject;
 ALTER TABLE teachers ADD COLUMN subject_id INT;
