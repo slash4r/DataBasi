@@ -1,7 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS task_03;
 USE `task_03`;
 
-
 CREATE TABLE Genres (
     genre_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
@@ -59,20 +58,22 @@ CREATE TABLE Agreements (
     FOREIGN KEY (channel_id) REFERENCES DistributionChannels (channel_id)
 );
 
+-- many-to-many relationship
 CREATE TABLE Tracks_Channels (
     track_id BIGINT UNSIGNED NOT NULL,
     channel_id BIGINT UNSIGNED NOT NULL,
-    FOREIGN KEY (track_id) REFERENCES Tracks (track_id),
-    FOREIGN KEY (channel_id) REFERENCES DistributionChannels (channel_id)
+    PRIMARY KEY (track_id, channel_id),
+    FOREIGN KEY (track_id) REFERENCES Tracks (track_id) ON DELETE CASCADE, -- Ensure integrity
+    FOREIGN KEY (channel_id) REFERENCES DistributionChannels (channel_id) ON DELETE CASCADE
 );
 
-
-
+-- many-to-many relationship
 CREATE TABLE Tracks_Artists (
     track_id BIGINT UNSIGNED NOT NULL,
     artist_id BIGINT UNSIGNED NOT NULL,
-    FOREIGN KEY (track_id) REFERENCES Tracks (track_id),
-    FOREIGN KEY (artist_id) REFERENCES Artists (artist_id)
+    PRIMARY KEY (track_id, artist_id),
+    FOREIGN KEY (track_id) REFERENCES Tracks (track_id) ON DELETE CASCADE, -- Ensure integrity
+    FOREIGN KEY (artist_id) REFERENCES Artists (artist_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Royalties (

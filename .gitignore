@@ -11,3 +11,6 @@
 /Denys-Mykhailov/02-task/.env
 /Denys-Mykhailov/practices
 /Denys-Mykhailov/practices
+
+# disable .env files everywhere
+.env
