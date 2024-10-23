@@ -14,3 +14,5 @@
 
 # disable .env files everywhere
 .env
+*.db
+*.wal

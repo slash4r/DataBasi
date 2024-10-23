@@ -1,0 +1,24 @@
+1. install dependencies:
+python.exe -m pip install --upgrade pip
+pip install dbt-mysql dbt-duckdb
+
+2. create a new dbt project:
+dbt init dbt_04_task
+choose duckdb as a database
+Profile dbt_04_task written to C:\Users\dennm\.dbt\profiles.yml
+
+3. configure the profile:
+edit the profiles.yml file
+add new output:
+    test:
+      type: mysql
+      server: localhost
+      port: 3306
+      user: root
+      password: MJiAXe2BBLU6g@q
+      database: task_04
+      threads: 1
+
+4. create a new model. Create a new file in the models directory:
+
+
