@@ -1,0 +1,1 @@
+select * from {{ source('task_04', 'artists') }}

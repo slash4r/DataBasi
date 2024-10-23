@@ -1,0 +1,26 @@
+dbt_04_task:
+  target: test  # The default target environment that dbt will use
+
+  outputs:
+    # MySQL connection configuration for fetching data
+    test:
+      type: mysql
+      server: localhost  # or use your MySQL server's hostname or IP address
+      port: 3306  # Default MySQL port; change if different
+      user: root  # Replace with your MySQL username
+      password: MJiAXe2BBLU6g@q  # Replace with your MySQL password
+      database: task_04  # The name of your MySQL database
+      schema: task_04  # The name of your MySQL schema
+      threads: 1
+
+    # DuckDB configuration for development environment
+    dev:
+      type: duckdb
+      path: dev.duckdb
+      threads: 1
+
+    # DuckDB configuration for production environment
+    prod:
+      type: duckdb
+      path: prod.duckdb
+      threads: 4

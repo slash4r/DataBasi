@@ -31,6 +31,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_04_task:
+    example:  # Exclude the example folder so dbt doesn't run it
+      +enabled: false
+
     raw:  # folder `raw`
-      materialized: view
+      materialized: table
+    stage:
+      materialized: table
+    mart:
+      materialized: table
   

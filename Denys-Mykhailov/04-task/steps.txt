@@ -19,6 +19,19 @@ add new output:
       database: task_04
       threads: 1
 
-4. create a new model. Create a new file in the models directory:
+4. create a new model. Create a new directory in the models directory "raw"
+4.1 create a schema.yml file for "raw" stage
+specific to the MySQL database and tables inside
+
+4.2 create a new model file "raw_artists.sql" in the "raw" directory
+select *
+from {{ source('task_04', 'Artists') }}; -> WITHOUT SEMICOLON SUKA BLYAT!
+
+4.3 check using dbt debug --target test
+
+4.4 make it 5 times
+
+4.5 run dbt run --target test for execution
+
 
 

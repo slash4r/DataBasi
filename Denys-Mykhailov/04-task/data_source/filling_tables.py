@@ -237,7 +237,6 @@ def insert_data():
 if __name__ == "__main__":
     try:
         insert_data()
-    except Exception as e:
+    except Exception:
         log_error("ERROR!")
-        exit(-69)
     log_success("All data inserted successfully!")

@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: task_04
+    tables:  # write every table with lowercase!!
+      - name: agreements
+      - name: albums
+      - name: artists
+      - name: distributionchannels
+      - name: genres
+      - name: royalties
+      - name: tracks
+      - name: tracks_artists
+      - name: tracks_channels
+      - name: users
