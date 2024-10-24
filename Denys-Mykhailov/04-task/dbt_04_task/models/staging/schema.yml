@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_albums
+    description: "Staging model for albums with cleaned and trimmed data."
+    columns:
+      - name: album_id
+        description: "The unique identifier for each album."
+        tests:
+          - not_null
+          - unique
+      - name: title
+        description: "The title of the album."
+      - name: release_date
+        description: "The release date of the album."
+      - name: artist_id
+        description: "The unique identifier for the artist who released the album."
+        tests:
+          - not_null

@@ -36,8 +36,8 @@ models:
 
     raw:  # folder `raw`
       materialized: table
-    stage:
+    staging:
       materialized: table
-    mart:
-      materialized: table
+#    mart:
+#      materialized: table
   

@@ -31,7 +31,12 @@ from {{ source('task_04', 'Artists') }}; -> WITHOUT SEMICOLON SUKA BLYAT!
 
 4.4 make it 5 times
 
-4.5 run dbt run --target test for execution
+4.5 run `dbt run --target test` for execution
 
+5. write a pandas script to load the data from the "raw" schema suka
+
+6. configure `staging` layer
+
+7. check if db have access to that .csv files
 
 
