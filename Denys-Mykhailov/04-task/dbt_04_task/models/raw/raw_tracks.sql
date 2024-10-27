@@ -1,1 +1,0 @@
-select * from {{ source('task_04', 'tracks') }}

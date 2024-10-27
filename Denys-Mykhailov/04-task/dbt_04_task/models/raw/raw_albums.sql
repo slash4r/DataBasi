@@ -1,1 +1,1 @@
-select * from {{ source('task_04', 'albums') }}
+SELECT * FROM mysqldb.albums

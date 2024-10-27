@@ -1,3 +1,10 @@
+0. pip install python-dotenv
+create a .env file in the root directory
+MYSQL_PASSWORD=...
+configure pre-hook in the dbt_project.yml file
+create python script to read the .env file and run the dbt commands
+
+
 1. install dependencies:
 python.exe -m pip install --upgrade pip
 pip install dbt-mysql dbt-duckdb
@@ -10,7 +17,7 @@ Profile dbt_04_task written to C:\Users\dennm\.dbt\profiles.yml
 3. configure the profile:
 edit the profiles.yml file
 add new output:
-    test:
+    mysql:
       type: mysql
       server: localhost
       port: 3306
@@ -18,7 +25,7 @@ add new output:
       password: MJiAXe2BBLU6g@q
       database: task_04
       threads: 1
-
+(this is useless, because we will operate with duckdb only!)
 4. create a new model. Create a new directory in the models directory "raw"
 4.1 create a schema.yml file for "raw" stage
 specific to the MySQL database and tables inside
