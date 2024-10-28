@@ -4,4 +4,4 @@ import subprocess
 load_dotenv()
 
 # Run dbt
-subprocess.run(["dbt", "run", "--models", "raw"])
+subprocess.run(["dbt", "run", "--models", "staging"])
