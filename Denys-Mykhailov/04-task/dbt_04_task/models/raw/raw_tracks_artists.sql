@@ -1,0 +1,1 @@
+SELECT * FROM mysqldb.tracks_artists
