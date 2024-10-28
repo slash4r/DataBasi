@@ -69,3 +69,49 @@ models:
           - not_null
           - accepted_values:
               values: ['Pending', 'Active', 'Inactive']
+  - name: stg_distributionchannels
+    description: "Staging model for the Distribution Channels table"
+    columns:
+      - name: channel_id
+        tests:
+          - not_null
+          - unique
+      - name: channel_name
+        tests:
+          - not_null
+  - name: stg_royalties
+    description: "Staging model for the Royalties table"
+    columns:
+      - name: amount
+        tests:
+          - not_null
+      - name: payment_date
+        tests:
+          - not_null
+      - name: artist_id
+        tests:
+          - not_null
+      - name: track_id
+        tests:
+          - not_null
+      - name: channel_id
+        tests:
+          - not_null
+  - name: "stg_tracks_artists"
+    description: "Staging model for the Tracks_Artists table"
+    columns:
+      - name: track_id
+        tests:
+          - not_null
+      - name: artist_id
+        tests:
+          - not_null
+  - name: "stg_tracks_channels"
+    description: "Staging model for the Tracks_Channels table"
+    columns:
+      - name: track_id
+        tests:
+          - not_null
+      - name: channel_id
+        tests:
+          - not_null

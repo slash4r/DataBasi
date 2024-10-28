@@ -1,7 +1,6 @@
 SELECT
     artist_id,
     name AS artist_name,
-    bio,
     UPPER(country) AS country,  -- Convert country names to uppercase for consistency
     user_id
 FROM {{ ref('raw_artists') }}
