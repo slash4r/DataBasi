@@ -8,6 +8,8 @@ name: 'dbt_04_task'
 version: '1.0.0'
 profile: 'dbt_04_task'
 
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
@@ -15,21 +17,21 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
+#target-path: "target"
 clean-targets:
   - "target"
   - "dbt_packages"
 
 models:
   dbt_04_task:
+    materialized: table
     example:
       +enabled: false
-
     raw:
       pre-hook:
         - "INSTALL mysql"
         - "LOAD mysql"
         - "ATTACH 'host={{ var('MYSQL_HOST') }} user={{ var('MYSQL_USER') }} password={{ var('MYSQL_PASSWORD') }} database={{ var('MYSQL_DATABASE') }}' AS mysqldb (TYPE MYSQL)"
       materialized: table
-
     staging:
-      materialized: table
+      materialized: view

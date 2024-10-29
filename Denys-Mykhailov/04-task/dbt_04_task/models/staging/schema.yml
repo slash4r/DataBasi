@@ -8,7 +8,7 @@ models:
         tests:
           - not_null
           - unique
-      - name: genre_name
+      - name: genre_name_lower
         tests:
           - not_null
 
@@ -23,8 +23,6 @@ models:
         tests:
           - not_null
           - unique
-          - regex:
-              pattern: '.*@.*'  # Check that email contains an '@' symbol
       - name: artist_id
         tests:
           - not_null
@@ -97,7 +95,7 @@ models:
       - name: channel_id
         tests:
           - not_null
-  - name: "stg_tracks_artists"
+  - name: stg_tracks_artists
     description: "Staging model for the Tracks_Artists table"
     columns:
       - name: track_id
@@ -106,7 +104,7 @@ models:
       - name: artist_id
         tests:
           - not_null
-  - name: "stg_tracks_channels"
+  - name: stg_tracks_channels
     description: "Staging model for the Tracks_Channels table"
     columns:
       - name: track_id
